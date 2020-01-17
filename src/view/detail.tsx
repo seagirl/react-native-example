@@ -1,8 +1,7 @@
 import React, { Component, ReactNode } from 'react'
 import { Text, View, Alert } from 'react-native'
 import { Avatar, Button } from 'react-native-elements'
-import styles from '../style'
-import { ScreenProp } from './'
+import { styles, ScreenProp } from './'
 
 export class DetailScreen extends Component<ScreenProp> {
   static navigationOptions = {
