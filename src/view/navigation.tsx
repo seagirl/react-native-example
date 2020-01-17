@@ -1,10 +1,30 @@
 import React, { Component } from 'react'
-import { Text, View, Alert } from 'react-native'
+import { Alert, Text, View } from 'react-native'
 import { Avatar, Button } from 'react-native-elements'
+import { createStackNavigator } from 'react-navigation-stack'
 import styles from '../style'
 import { ScreenProp } from './'
 
-export class DetailScreen extends Component<ScreenProp> {
+class ListScreen extends Component<ScreenProp> {
+  static navigationOptions = {
+    title: 'S2',
+  }
+
+  render (): object {
+    return (
+      <View style={styles.subContainer}>
+        <Button
+          title='yoshizu'
+          buttonStyle={styles.button}
+          raised
+          onPress={(): void => { this.props.navigation.navigate('Detail') }}
+        />
+      </View>
+    )
+  }
+}
+
+class DetailScreen extends Component<ScreenProp> {
   static navigationOptions = {
     title: 'プロフィール',
   }
@@ -38,3 +58,14 @@ export class DetailScreen extends Component<ScreenProp> {
     )
   }
 }
+
+export const MainNavigator = createStackNavigator(
+  {
+    List: {
+      screen: ListScreen,
+    },
+    Detail: {
+      screen: DetailScreen,
+    }
+  }
+)

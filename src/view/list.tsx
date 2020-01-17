@@ -9,14 +9,14 @@ export class ListScreen extends Component<ScreenProp> {
     title: 'S2',
   }
 
-  render() {
+  render (): object {
     return (
       <View style={styles.subContainer}>
         <Button
           title='yoshizu'
           buttonStyle={styles.button}
           raised
-          onPress={() => this.props.navigation.navigate('Detail')}
+          onPress={(): void => { this.props.navigation.navigate('Detail') }}
         />
       </View>
     )
