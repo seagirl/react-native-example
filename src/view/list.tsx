@@ -1,22 +1,43 @@
 import React, { Component, ReactNode } from 'react'
 import { View } from 'react-native'
-import { Button } from 'react-native-elements'
-import { styles, ScreenProp } from './'
+import { ListItem } from 'react-native-elements'
+import { ScreenProp } from './'
 
 export class ListScreen extends Component<ScreenProp> {
   static navigationOptions = {
     title: 'S2',
   }
 
+  list = [
+    {
+      name: 'yoshizu',
+    },
+    {
+      name: 'hanai',
+    },
+    {
+      name: 'kuriyama',
+    },
+    {
+      name: 'umeta',
+    },
+  ]
+
   render (): ReactNode {
     return (
-      <View style={styles.subContainer}>
-        <Button
-          title='yoshizu'
-          buttonStyle={styles.button}
-          raised
-          onPress={(): void => { this.props.navigation.navigate('Detail') }}
-        />
+      <View>
+        {
+          this.list.map((l, i) => (
+            <ListItem
+              key={i}
+              leftIcon={{name: 'user', type: 'font-awesome'}}
+              title={l.name}
+              bottomDivider
+              chevron
+              onPress={(): void => { this.props.navigation.navigate('Detail', { name: l.name }) }}
+            />
+          ))
+        }
       </View>
     )
   }

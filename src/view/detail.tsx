@@ -16,7 +16,7 @@ export class DetailScreen extends Component<ScreenProp> {
     return (
       <View style={styles.container}>
         <View style={styles.subContainer}>
-          <Text style={styles.text}>yoshizu</Text>
+          <Text style={styles.text}>{ this.props.navigation.state.params.name }</Text>
           <View style={styles.spacer} />
           <Avatar
             size="xlarge"
