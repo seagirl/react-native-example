@@ -18,7 +18,7 @@ export default class App extends Component<{}>  {
           rightComponent={{ icon: 'home', color: '#fff' }}
         />
         <View style={styles.subContainer}>
-          <Text style={styles.text}>Takuho Yoshizu</Text>
+          <Text style={styles.text}>yoshizu</Text>
           <View style={styles.spacer} />
           <Avatar
             size="xlarge"
