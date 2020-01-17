@@ -1,8 +1,37 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Alert } from 'react-native'
 import { Avatar, Button, Header } from 'react-native-elements'
+import {createAppContainer} from 'react-navigation'
+import { createStackNavigator, NavigationStackProp } from 'react-navigation-stack'
 
-export default class App extends Component<{}>  {
+type ScreenProps = {
+  navigation: NavigationStackProp<{ userId: string }>;
+}
+
+class ListScreen extends Component<ScreenProps> {
+  static navigationOptions = {
+    title: 'S2',
+  }
+
+  render() {
+    return (
+      <View style={styles.subContainer}>
+        <Button
+          title='yoshizu'
+          buttonStyle={styles.button}
+          raised
+          onPress={() => this.props.navigation.navigate('Detail')}
+        />
+      </View>
+    )
+  }
+}
+
+class DetailScreen extends Component<ScreenProps> {
+  static navigationOptions = {
+    title: 'プロフィール',
+  }
+
   uploadButtonDidPress() {
     Alert.alert('まだ実装出来ていません')
   }
@@ -10,13 +39,6 @@ export default class App extends Component<{}>  {
   render() {
     return (
       <View style={styles.container}>
-        <Header
-          placement="left"
-          containerStyle={{ backgroundColor: '#333' }}
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'プロフィール', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-        />
         <View style={styles.subContainer}>
           <Text style={styles.text}>yoshizu</Text>
           <View style={styles.spacer} />
@@ -36,16 +58,31 @@ export default class App extends Component<{}>  {
           />
         </View>
       </View>
-    );
+    )
   }
 }
+
+const MainNavigator = createStackNavigator(
+  {
+    List: {
+      screen: ListScreen,
+    },
+    Detail: {
+      screen: DetailScreen,
+    }
+  },
+  {
+    initialRouteName: 'List',
+  }
+)
+
+const App = createAppContainer(MainNavigator)
+
+export default App
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   subContainer: {
     flex: 1,
@@ -67,4 +104,4 @@ const styles = StyleSheet.create({
   spacer: {
     height: 16
   }
-});
+})
