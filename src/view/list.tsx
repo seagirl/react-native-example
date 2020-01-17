@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, ReactNode } from 'react'
 import { View } from 'react-native'
 import { Button } from 'react-native-elements'
 import styles from '../style'
@@ -9,7 +9,7 @@ export class ListScreen extends Component<ScreenProp> {
     title: 'S2',
   }
 
-  render (): object {
+  render (): ReactNode {
     return (
       <View style={styles.subContainer}>
         <Button

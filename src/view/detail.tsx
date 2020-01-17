@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, ReactNode } from 'react'
 import { Text, View, Alert } from 'react-native'
 import { Avatar, Button } from 'react-native-elements'
 import styles from '../style'
@@ -13,7 +13,7 @@ export class DetailScreen extends Component<ScreenProp> {
     Alert.alert('まだ実装出来ていません')
   }
 
-  render (): object {
+  render (): ReactNode {
     return (
       <View style={styles.container}>
         <View style={styles.subContainer}>
