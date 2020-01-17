@@ -4,8 +4,8 @@ import { Avatar, Button, Header } from 'react-native-elements'
 import {createAppContainer} from 'react-navigation'
 import { createStackNavigator, NavigationStackProp } from 'react-navigation-stack'
 
-type ScreenProps = {
-  navigation: NavigationStackProp<{ userId: string }>;
+interface ScreenProps {
+  navigation: NavigationStackProp<{ userId: string }>
 }
 
 class ListScreen extends Component<ScreenProps> {
