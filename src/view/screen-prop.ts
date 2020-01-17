@@ -1,5 +1,5 @@
 import { NavigationStackProp } from 'react-navigation-stack'
 
-export interface ScreenProps {
+export interface ScreenProp {
   navigation: NavigationStackProp<{ userId: string }>
 }

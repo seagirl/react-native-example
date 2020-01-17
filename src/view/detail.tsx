@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Text, View, Alert } from 'react-native'
 import { Avatar, Button } from 'react-native-elements'
 import styles from '../style'
-import { ScreenProps } from './'
+import { ScreenProp } from './'
 
-export class DetailScreen extends Component<ScreenProps> {
+export class DetailScreen extends Component<ScreenProp> {
   static navigationOptions = {
     title: 'プロフィール',
   }

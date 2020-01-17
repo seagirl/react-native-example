@@ -1,6 +1,6 @@
 import {createAppContainer} from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
-import { ListScreen, DetailScreen } from './screens'
+import { ListScreen, DetailScreen } from './view'
 
 const MainNavigator = createStackNavigator(
   {

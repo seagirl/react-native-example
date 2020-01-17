@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import { Button } from 'react-native-elements'
 import styles from '../style'
-import { ScreenProps } from './'
+import { ScreenProp } from './'
 
-export class ListScreen extends Component<ScreenProps> {
+export class ListScreen extends Component<ScreenProp> {
   static navigationOptions = {
     title: 'S2',
   }
