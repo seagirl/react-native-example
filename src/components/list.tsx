@@ -5,7 +5,7 @@ import { ListItem } from 'react-native-elements'
 import { getList } from '../action'
 import types from '../action/types'
 import { MemberList } from '../entity'
-import { ScreenProp } from './screen-prop'
+import { ScreenProp } from './navigation'
 
 interface Prop {
   getList: Function;
