@@ -3,17 +3,14 @@ import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
 import { getList } from '../action'
+import types from '../action/types'
 import { MemberList } from '../entity'
 import { ScreenProp } from './screen-prop'
 
 interface Prop {
   getList: Function;
+  selectMember: Function;
   members: MemberList[];
-}
-
-const initialProps = {
-  getList: getList,
-  members: []
 }
 
 class ListScreen extends Component<ScreenProp & Prop> {
@@ -25,8 +22,13 @@ class ListScreen extends Component<ScreenProp & Prop> {
     this.props.getList()
   }
 
+  itemDidSelect (member: MemberList): void {
+    this.props.selectMember(member)
+    this.props.navigation.navigate('Detail')
+  }
+
   render (): ReactNode {
-    const members = this.props.members || initialProps.members
+    const members = this.props.members || []
     return (
       <ScrollView>
         {
@@ -39,7 +41,7 @@ class ListScreen extends Component<ScreenProp & Prop> {
               bottomDivider
               chevron
               badge={member.status ? { value: 'オンライン', badgeStyle: { backgroundColor: '#c33' } } : undefined}
-              onPress={(): void => { this.props.navigation.navigate('Detail', member) }}
+              onPress={(): void => { this.itemDidSelect(member) }}
             />
           ))
         }
@@ -48,10 +50,19 @@ class ListScreen extends Component<ScreenProp & Prop> {
   }
 }
 
-function mapStateToProps (state): object {
+const mapStateToProps = (state): object => {
   return {
     members: state.members
   }
 }
 
-export default connect(mapStateToProps, initialProps)(ListScreen)
+const mapDispatchToProps = (dispatch): object => {
+  return {
+    getList: getList,
+    selectMember: (member): void => {
+      dispatch({ type: types.SELECT_MEMBER, payload: { member: member } })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListScreen)

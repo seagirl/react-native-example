@@ -1,6 +1,7 @@
 enum actionTypes {
   LIST_DATA_LOADED = 'LIST_DATA_LOADED',
   DETAIL_DATA_LOADED = 'DETAIL_DATA_LOADED',
+  SELECT_MEMBER = 'SELECT_MEMBER',
 }
 
 export default actionTypes
