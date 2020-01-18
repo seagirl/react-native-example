@@ -2,10 +2,16 @@ import React, { Component, ReactNode } from 'react'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
-import { getList } from '../action/index'
+import { getList } from '../action'
+import { MemberList } from '../entity'
 import { ScreenProp } from './screen-prop'
 
-class ListScreen extends Component<ScreenProp & { getList; members }> {
+interface Prop {
+  getList: Function;
+  members: MemberList[];
+}
+
+class ListScreen extends Component<ScreenProp & Prop> {
   static navigationOptions = {
     title: 'S2',
   }

@@ -1,16 +1,4 @@
-export interface MemberList {
-  name: string;
-  status: boolean;
-  color: string;
-}
-
-export interface MemberDetail {
-  name: string;
-  status: boolean;
-  color: string;
-  online: string;
-  offline?: string;
-}
+import { MemberList, MemberDetail } from '../entity/member'
 
 export class MemberAPI {
   static baseURL = 'https://working.s2f.dev/api/members'

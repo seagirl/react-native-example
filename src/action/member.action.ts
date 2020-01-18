@@ -1,4 +1,4 @@
-import { MemberAPI } from '../api/member'
+import { MemberAPI } from '../api'
 import types from './types'
 
 export function getList() {

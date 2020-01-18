@@ -2,11 +2,17 @@ import React, { Component, ReactNode } from 'react'
 import { Text, View } from 'react-native'
 import { Avatar } from 'react-native-elements'
 import { connect } from 'react-redux'
-import { getDetail } from '../action/index'
+import { getDetail } from '../action'
+import { MemberDetail } from '../entity'
 import { ScreenProp } from './screen-prop'
 import { styles } from './style'
 
-class DetailScreen extends Component<ScreenProp & { getDetail; member }> {
+interface Prop {
+  getDetail: Function;
+  member: MemberDetail;
+}
+
+class DetailScreen extends Component<ScreenProp & Prop> {
   static navigationOptions = {
     title: 'プロフィール',
   }
@@ -16,7 +22,7 @@ class DetailScreen extends Component<ScreenProp & { getDetail; member }> {
   }
 
   render (): ReactNode {
-    const member = this.props.member || {}
+    const member = this.props.member || { name: '', color: '', status: true }
     return (
       <View style={styles.container}>
         <View style={styles.subContainer}>
