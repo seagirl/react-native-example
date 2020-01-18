@@ -18,6 +18,10 @@ export const styles = StyleSheet.create({
     color: '#333',
     fontSize: 24,
   },
+  textSmall: {
+    color: '#333',
+    fontSize: 16,
+  },
   button: {
     backgroundColor: '#333',
   },
