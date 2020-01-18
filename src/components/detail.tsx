@@ -32,12 +32,12 @@ class DetailScreen extends Component<ScreenProp & Prop> {
             size="xlarge"
             rounded
             icon={{name: 'user', type: 'font-awesome', color: '#fff' }}
-            overlayContainerStyle={{backgroundColor: member.color}}
+            overlayContainerStyle={{backgroundColor: member.status ? member.color : '#ccc'}}
             activeOpacity={0.7}
           />
           <View style={styles.spacer} />
-          <Text style={styles.textSmall}>online: { member.online || '--------' }</Text>
-          <Text style={styles.textSmall}>offline: { member.online || '--------' }</Text>
+          <Text style={styles.textSmall}>出社時間: { member.online || '--------' }</Text>
+          <Text style={styles.textSmall}>退社時間: { member.online || '--------' }</Text>
         </View>
       </View>
     )

@@ -39,7 +39,11 @@ class ListScreen extends Component<ScreenProp & Prop> {
               title={member.name}
               bottomDivider
               chevron
-              badge={member.status ? { value: 'オンライン', badgeStyle: { backgroundColor: '#c33' } } : undefined}
+              badge={
+                member.status
+                  ? { value: 'オンライン', badgeStyle: { backgroundColor: '#c33' } }
+                  : { value: 'オフライン', badgeStyle: { backgroundColor: '#ccc' } }
+              }
               onPress={(): void => { this.itemDidSelect(member) }}
             />
           ))
