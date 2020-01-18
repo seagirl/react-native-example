@@ -11,6 +11,11 @@ interface Prop {
   members: MemberList[];
 }
 
+const initialProps = {
+  getList: getList,
+  members: []
+}
+
 class ListScreen extends Component<ScreenProp & Prop> {
   static navigationOptions = {
     title: 'S2',
@@ -21,7 +26,7 @@ class ListScreen extends Component<ScreenProp & Prop> {
   }
 
   render (): ReactNode {
-    const members = this.props.members || []
+    const members = this.props.members
     return (
       <ScrollView>
         {
@@ -49,7 +54,4 @@ function mapStateToProps (state): object {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { getList }
-)(ListScreen)
+export default connect(mapStateToProps, initialProps)(ListScreen)

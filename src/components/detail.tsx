@@ -12,6 +12,11 @@ interface Prop {
   member: MemberDetail;
 }
 
+const initialProps = {
+  getDetail: getDetail,
+  member: { name: '', color: '', status: true }
+}
+
 class DetailScreen extends Component<ScreenProp & Prop> {
   static navigationOptions = {
     title: 'プロフィール',
@@ -22,7 +27,7 @@ class DetailScreen extends Component<ScreenProp & Prop> {
   }
 
   render (): ReactNode {
-    const member = this.props.member || { name: '', color: '', status: true }
+    const member = this.props.member
     return (
       <View style={styles.container}>
         <View style={styles.subContainer}>
@@ -50,7 +55,4 @@ function mapStateToProps (state): object {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { getDetail }
-)(DetailScreen)
+export default connect(mapStateToProps, initialProps)(DetailScreen)
