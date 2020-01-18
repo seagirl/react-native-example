@@ -14,7 +14,7 @@ interface Prop {
 
 class DetailScreen extends Component<ScreenProp & Prop> {
   static navigationOptions = {
-    title: 'プロフィール',
+    title: '',
   }
 
   componentDidMount (): void {
