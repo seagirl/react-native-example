@@ -1,8 +1,8 @@
 import React, { Component, ReactNode } from 'react'
 import { Provider } from 'react-redux'
 import { createAppContainer } from 'react-navigation'
-import { MainNavigator } from './view/navigation'
-import store from './store'
+import { MainNavigator } from './navigation'
+import store from '../store'
 
 const Container = createAppContainer(MainNavigator)
 
