@@ -4,7 +4,7 @@ import { Avatar } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { getDetail } from '../action'
 import { MemberDetail } from '../entity'
-import { ScreenProp } from './screen-prop'
+import { ScreenProp } from './navigation'
 import { styles } from './style'
 
 interface Prop {
@@ -50,10 +50,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const mapDispatchToProps = (): object => {
-  return {
-    getDetail: getDetail,
-  }
-}
+const mapDispatchToProps = { getDetail }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailScreen)

@@ -2,8 +2,7 @@ import React, { Component, ReactNode } from 'react'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
-import { getList } from '../action'
-import types from '../action/types'
+import { getList, selectMember } from '../action'
 import { MemberList } from '../entity'
 import { ScreenProp } from './navigation'
 
@@ -56,13 +55,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const mapDispatchToProps = (dispatch): object => {
-  return {
-    getList: getList,
-    selectMember: (member): void => {
-      dispatch({ type: types.SELECT_MEMBER, payload: { member: member } })
-    }
-  }
-}
+const mapDispatchToProps = { getList, selectMember }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListScreen)

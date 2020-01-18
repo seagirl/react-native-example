@@ -7,7 +7,7 @@ export function getList() {
       .then(members => {
         dispatch({ type: types.LIST_DATA_LOADED, payload: { members: members } })
       })
-  };
+  }
 }
 
 export function getDetail(name: string) {
@@ -16,5 +16,11 @@ export function getDetail(name: string) {
       .then(member => {
         dispatch({ type: types.DETAIL_DATA_LOADED, payload: { member: member } })
       })
-  };
+  }
+}
+
+export function selectMember(member) {
+  return function(dispatch) {
+    dispatch({ type: types.SELECT_MEMBER, payload: { member: member } })
+  }
 }
