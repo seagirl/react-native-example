@@ -8,6 +8,6 @@ export interface MemberDetail {
   name: string;
   status: boolean;
   color: string;
-  online?: string;
-  offline?: string;
+  online: string | undefined;
+  offline: string | undefined;
 }

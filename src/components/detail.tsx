@@ -14,7 +14,7 @@ interface Prop {
 
 const initialProps = {
   getDetail: getDetail,
-  member: { name: '', color: '', status: true }
+  member: { name: '', color: '', status: true, online: undefined, offline: undefined }
 }
 
 class DetailScreen extends Component<ScreenProp & Prop> {
@@ -27,7 +27,7 @@ class DetailScreen extends Component<ScreenProp & Prop> {
   }
 
   render (): ReactNode {
-    const member = this.props.member
+    const member = this.props.member || initialProps.member
     return (
       <View style={styles.container}>
         <View style={styles.subContainer}>
