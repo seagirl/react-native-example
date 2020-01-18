@@ -27,7 +27,7 @@ class ListScreen extends Component<ScreenProp & Prop> {
   }
 
   render (): ReactNode {
-    const members = this.props.members || []
+    const members = this.props.members
     return (
       <ScrollView>
         {
