@@ -8,11 +8,11 @@ const initialState = {
 export function rootReducer (state = initialState, action) {
   switch (action.type) {
     case types.LIST_DATA_LOADED:
-      return { members: action.payload.members, selectedMember: state.selectedMember }
+      return { ...state, members: action.payload.members }
     case types.DETAIL_DATA_LOADED:
-      return { members: state.members, selectedMember: action.payload.member }
+      return { ...state, selectedMember: action.payload.member }
     case types.SELECT_MEMBER:
-      return { members: state.members, selectedMember: action.payload.member }
+      return { ...state, selectedMember: action.payload.member }
     default:
       return state
   }
