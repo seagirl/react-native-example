@@ -1,5 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack'
-import { ListScreen, DetailScreen } from './'
+import ListScreen from './list'
+import DetailScreen from './detail'
 
 export const MainNavigator = createStackNavigator(
   {

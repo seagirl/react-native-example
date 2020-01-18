@@ -1,6 +1,17 @@
+import React, { Component, ReactNode } from 'react'
+import { Provider } from 'react-redux'
 import { createAppContainer } from 'react-navigation'
 import { MainNavigator } from './view/navigation'
+import store from './store'
 
-const App = createAppContainer(MainNavigator)
+const Container = createAppContainer(MainNavigator)
 
-export default App
+export default class App extends Component {
+  render (): ReactNode {
+    return (
+      <Provider store={store}>
+        <Container />
+      </Provider>
+    )
+  }
+}

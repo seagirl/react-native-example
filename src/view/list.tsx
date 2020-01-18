@@ -1,42 +1,34 @@
 import React, { Component, ReactNode } from 'react'
 import { ScrollView } from 'react-native'
+import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
-import { MemberAPI } from '../api/member'
-import { ScreenProp } from './'
+import { getList } from '../action/index'
+import { ScreenProp } from './screen-prop'
 
-export class ListScreen extends Component<ScreenProp> {
+class ListScreen extends Component<ScreenProp & { getList; members }> {
   static navigationOptions = {
     title: 'S2',
   }
 
-  state = {
-    data: []
-  }
-
   componentDidMount (): void {
-    MemberAPI.getList()
-      .then((data) => {
-        this.setState({ data })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    this.props.getList()
   }
 
   render (): ReactNode {
+    const members = this.props.members || []
     return (
       <ScrollView>
         {
-          this.state.data.map((l, i) => (
+          members.map((member, i) => (
             <ListItem
               key={i}
-              leftIcon={{name: 'user', type: 'font-awesome', color: l.color }}
+              leftIcon={{name: 'user', type: 'font-awesome', color: member.color }}
               titleStyle={{ color: '#333' }}
-              title={l.name}
+              title={member.name}
               bottomDivider
               chevron
-              badge={l.status ? { value: undefined, badgeStyle: { backgroundColor: 'blue' } } : undefined}
-              onPress={(): void => { this.props.navigation.navigate('Detail', l) }}
+              badge={member.status ? { value: 'オンライン', badgeStyle: { backgroundColor: '#c33' } } : undefined}
+              onPress={(): void => { this.props.navigation.navigate('Detail', member) }}
             />
           ))
         }
@@ -44,3 +36,14 @@ export class ListScreen extends Component<ScreenProp> {
     )
   }
 }
+
+function mapStateToProps (state): object {
+  return {
+    members: state.members
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { getList }
+)(ListScreen)
