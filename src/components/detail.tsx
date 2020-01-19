@@ -37,7 +37,7 @@ class DetailScreen extends Component<ScreenProp & Prop> {
           />
           <View style={styles.spacer} />
           <Text style={styles.textSmall}>出社時間: { member.online || '--------' }</Text>
-          <Text style={styles.textSmall}>退社時間: { member.online || '--------' }</Text>
+          <Text style={styles.textSmall}>退社時間: { member.offline || '--------' }</Text>
         </View>
       </View>
     )
