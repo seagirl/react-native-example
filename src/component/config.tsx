@@ -32,11 +32,13 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
         <Input
           value={this.props.id}
           placeholder='ID'
+          containerStyle={styles.inputContainer}
           onChangeText={(text): void => { this.inputId = text }}
         />
         <Input
           value={this.props.password}
           placeholder='PASSWORD'
+          containerStyle={styles.inputContainer}
           secureTextEntry={true}
           onChangeText={(text): void => { this.inputPassword = text }}
         />
