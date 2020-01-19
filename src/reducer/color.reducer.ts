@@ -3,12 +3,10 @@ import { Color } from '../entity'
 
 interface State {
   items: Color[];
-  selected: Color | null;
 }
 
 const initialState: State = {
-  items: [],
-  selected: null
+  items: []
 }
 
 export function colorReducer (state = initialState, action): State {

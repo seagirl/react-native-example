@@ -1,4 +1,3 @@
-import { Color } from '../../entity'
 import { Action } from '../'
 import { getListAction, GetListPayload } from './action'
 
