@@ -2,6 +2,7 @@ import { createStackNavigator, NavigationStackProp } from 'react-navigation-stac
 import ListScreen from './list'
 import DetailScreen from './detail'
 import ColorPickerScreen from './color-picker'
+import ConfigScreen from './config'
 
 export interface ScreenProp {
   navigation: NavigationStackProp<{ userId: string }>;
@@ -17,6 +18,9 @@ export const MainNavigator = createStackNavigator(
     },
     ColorPicker: {
       screen: ColorPickerScreen,
+    },
+    Config: {
+      screen: ConfigScreen,
     }
   },
   {

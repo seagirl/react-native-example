@@ -1,7 +1,7 @@
 import React, { Component, ReactNode } from 'react'
 import { ScrollView, RefreshControl } from 'react-native'
 import { connect } from 'react-redux'
-import { ListItem } from 'react-native-elements'
+import { ListItem, Button } from 'react-native-elements'
 import { getList, selectMember, setRefreshing } from '../action/member'
 import { Member } from '../entity'
 import { ScreenProp } from './navigation'
@@ -16,8 +16,25 @@ interface Prop {
 }
 
 class ListScreen extends Component<ScreenProp & Prop> {
-  static navigationOptions = {
-    title: 'S2',
+  static navigationOptions = ({ navigation }): object => {
+    return {
+      title: 'S2',
+      headerRight: (): ReactNode => {
+        return (
+          <Button
+            title=''
+            type='clear'
+            icon={{
+              name: 'cog',
+              type: 'font-awesome',
+              size: 24,
+              color: colors.label.color
+            }}
+            onPress={(): void => { navigation.navigate('Config') }}
+          />
+        )
+      }
+    }
   }
 
   timer?: number

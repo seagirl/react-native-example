@@ -7,8 +7,9 @@ export function getList () {
   return async (dispatch): Promise<void> => {
     try {
       const newMembers = await MemberAPI.getList()
-      return dispatch(getListAction(newMembers))
+      return dispatch(getListAction(newMembers || []))
     } catch {
+      console.log('MemberAPI.getList')
       return dispatch(setRefreshingAction(false))
     }
   }

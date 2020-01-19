@@ -46,7 +46,7 @@ class DetailScreen extends Component<ScreenProp & Prop> {
           icon={{
             name: 'tint',
             type: 'font-awesome',
-            size: 15,
+            size: 16,
             color: colors.icon.color
           }}
           onPress={(): void => { this.props.navigation.navigate('ColorPicker') }}

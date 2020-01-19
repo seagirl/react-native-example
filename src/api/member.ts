@@ -1,11 +1,36 @@
+import store from '../store'
+import { Buffer } from 'buffer'
 import { Member } from '../entity/member'
 
 export class MemberAPI {
   static baseURL = 'https://working.s2f.dev/api/members'
 
+  static authString (): string | null {
+    const state = store.getState()
+    const id = state.config.id
+    const password = state.config.password
+
+    if (id && password) {
+      return `${id}:${password}`
+    }
+
+    return null
+  }
+
+  static createHeaders (): Headers {
+    const authString = this.authString()
+    const headers = new Headers()
+    if (authString !== null) {
+      headers.set('Authorization', 'Basic ' + Buffer.from(authString).toString('base64'))
+    }
+    return headers
+  }
+
   static async getList (): Promise<Member[]> {
     console.log('MemberAPI.getList()')
-    const res = await fetch(this.baseURL)
+
+    const headers = this.createHeaders()
+    const res = await fetch(this.baseURL, { method: 'GET', headers: headers })
     const json = await res.json()
     return json.members
       .sort((a, b) => {
@@ -27,7 +52,8 @@ export class MemberAPI {
   }
 
   static async getDetail (name: string): Promise<Member> {
-    const res = await fetch(this.baseURL + '/' + name)
+    const headers = this.createHeaders()
+    const res = await fetch(this.baseURL + '/' + name, { method: 'GET', headers: headers })
     const json = await res.json()
     const member = json.member
     const color = member.color.replace('0x', '#')
@@ -41,9 +67,11 @@ export class MemberAPI {
   }
 
   static async changeStatus (member: Member): Promise<Member> {
+    const headers = this.createHeaders()
     const newStatus = member.status ? 0 : 1
     const res = await fetch(this.baseURL + '/' + member.name + '/state?state=' + newStatus, {
-      method: 'POST'
+      method: 'POST',
+      headers: headers
     })
     const json = await res.json()
     const status = json.status
@@ -57,8 +85,10 @@ export class MemberAPI {
   }
 
   static async changeColor (member: Member, colorId: number): Promise<Member> {
+    const headers = this.createHeaders()
     const res = await fetch(this.baseURL + '/' + member.name + '/color?colorId=' + colorId, {
-      method: 'POST'
+      method: 'POST',
+      headers: headers
     })
     const json = await res.json()
     const color = json.color

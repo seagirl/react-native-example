@@ -14,6 +14,14 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  containerConfig: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginTop: 16,
+    marginRight: 6,
+    marginBottom: 16,
+    marginLeft: 6,
+  },
   h1: {
     ...colors.label,
     fontSize: 36
