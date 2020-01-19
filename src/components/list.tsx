@@ -59,6 +59,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const mapDispatchToProps = { getList, selectMember }
+const actionCreators = { getList, selectMember }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListScreen)
+export default connect(mapStateToProps, actionCreators)(ListScreen)

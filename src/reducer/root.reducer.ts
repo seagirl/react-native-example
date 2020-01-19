@@ -1,11 +1,17 @@
 import types from '../action/types'
+import { MemberList, MemberDetail } from '../entity'
 
-const initialState = {
+interface State {
+  members: MemberList[];
+  selectedMember: MemberDetail | null;
+}
+
+const initialState: State = {
   members: [],
   selectedMember: null
 }
 
-export function rootReducer (state = initialState, action) {
+export function rootReducer (state = initialState, action): State {
   switch (action.type) {
     case types.LIST_DATA_LOADED:
       return { ...state, members: action.payload.members }

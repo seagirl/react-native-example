@@ -50,6 +50,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const mapDispatchToProps = { getDetail }
+const actionCreators = { getDetail }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailScreen)
+export default connect(mapStateToProps, actionCreators)(DetailScreen)
