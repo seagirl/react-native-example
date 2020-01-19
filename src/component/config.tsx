@@ -1,5 +1,5 @@
 import React, { Component, ReactNode } from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { getData, setData } from '../action/config'
@@ -24,21 +24,24 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
   render (): ReactNode {
     return (
       <View style={styles.containerConfig}>
+        <Text style={styles.h4}>ベーシック認証</Text>
         <Input
           value={this.props.id}
           placeholder='ID'
+          containerStyle={styles.inputContainer}
           onChangeText={(text): void => { this.inputId = text }}
         />
         <Input
           value={this.props.password}
           placeholder='PASSWORD'
+          containerStyle={styles.inputContainer}
           secureTextEntry={true}
           onChangeText={(text): void => { this.inputPassword = text }}
         />
         <View style={{ height: 24 }} />
         <Button
           title='保存する'
-          buttonStyle={{ backgroundColor: colors.theme.color, marginLeft: 10 }}
+          buttonStyle={{ backgroundColor: colors.theme.color }}
           icon={{
             name: 'save',
             type: 'font-awesome',

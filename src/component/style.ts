@@ -18,9 +18,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     marginTop: 16,
-    marginRight: 6,
+    marginRight: 16,
     marginBottom: 16,
-    marginLeft: 6,
+    marginLeft: 16,
+  },
+  inputContainer: {
+    paddingLeft: 0,
+    paddingRight: 0,
   },
   h1: {
     ...colors.label,
@@ -33,6 +37,10 @@ export const styles = StyleSheet.create({
   h3: {
     ...colors.label,
     fontSize: 24
+  },
+  h4: {
+    ...colors.label,
+    fontSize: 20
   },
   label: {
     ...colors.label,
