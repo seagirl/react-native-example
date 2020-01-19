@@ -2,14 +2,14 @@ import React, { Component, ReactNode } from 'react'
 import { Text, View } from 'react-native'
 import { Avatar } from 'react-native-elements'
 import { connect } from 'react-redux'
-import { getDetail } from '../action'
-import { MemberDetail } from '../entity'
+import { getDetail } from '../action/member'
+import { Member } from '../entity'
 import { ScreenProp } from './navigation'
 import { styles } from './style'
 
 interface Prop {
   getDetail: Function;
-  member: MemberDetail;
+  member: Member;
 }
 
 class DetailScreen extends Component<ScreenProp & Prop> {

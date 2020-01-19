@@ -1,9 +1,9 @@
-import { MemberList, MemberDetail } from '../entity/member'
+import { Member } from '../entity/member'
 
 export class MemberAPI {
   static baseURL = 'https://working.s2f.dev/api/members'
 
-  static async getList(): Promise<MemberList> {
+  static async getList (): Promise<Member[]> {
     const res = await fetch(this.baseURL)
     const json = await res.json()
     return json.members
@@ -13,17 +13,19 @@ export class MemberAPI {
         }
         return b.state > a.state
       })
-      .map((member): MemberList => {
+      .map((member): Member => {
         const color = member.color.replace('0x', '#')
         return {
           name: member.name,
           status: member.state === 1,
-          color: color
+          color: color,
+          online: undefined,
+          offline: undefined
         }
       })
   }
 
-  static async getDetail(name: string): Promise<MemberDetail> {
+  static async getDetail (name: string): Promise<Member> {
     const res = await fetch(this.baseURL + '/' + name)
     const json = await res.json()
     const member = json.member

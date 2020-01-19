@@ -1,9 +1,5 @@
-enum Types {
+export enum Types {
   LIST_DATA_LOADED   = 'MEMBER/LIST_DATA_LOADED',
   DETAIL_DATA_LOADED = 'MEMBER/DETAIL_DATA_LOADED',
   SELECT_MEMBER      = 'MEMBER/SELECT_MEMBER',
-}
-
-export class MemberAction {
-  static readonly Types = Types
 }

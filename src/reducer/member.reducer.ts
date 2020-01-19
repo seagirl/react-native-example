@@ -1,17 +1,15 @@
-import { MemberAction } from '../action'
-import { MemberList, MemberDetail } from '../entity'
+import { Types } from '../action/member'
+import { Member } from '../entity'
 
 interface State {
-  items: MemberList[];
-  selected: MemberDetail | null;
+  items: Member[];
+  selected: Member | null;
 }
 
 const initialState: State = {
   items: [],
   selected: null
 }
-
-const Types = MemberAction.Types
 
 export function memberReducer (state = initialState, action): State {
   switch (action.type) {

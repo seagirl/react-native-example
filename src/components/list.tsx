@@ -2,7 +2,7 @@ import React, { Component, ReactNode } from 'react'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
-import { getList, selectMember } from '../action'
+import { getList, selectMember } from '../action/member'
 import { MemberList } from '../entity'
 import { ScreenProp } from './navigation'
 

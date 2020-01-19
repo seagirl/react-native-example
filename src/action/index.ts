@@ -1,7 +1,4 @@
-export * from './member.action'
-export * from './member.creator'
-
-export interface Action {
+export interface Action<T> {
   type: string;
-  payload?: object;
+  payload?: T;
 }

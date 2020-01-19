@@ -1,10 +1,4 @@
-export interface MemberList {
-  name: string;
-  status: boolean;
-  color: string;
-}
-
-export interface MemberDetail {
+export interface Member {
   name: string;
   status: boolean;
   color: string;
