@@ -2,14 +2,14 @@ import React, { Component, ReactNode } from 'react'
 import { Text, View } from 'react-native'
 import { Avatar, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
-import { getDetail, changeStatus } from '../action/member'
+import { getDetail, changeStatusAndGetList } from '../action/member'
 import { Member } from '../entity'
 import { ScreenProp } from './navigation'
 import { styles, colors } from './style'
 
 interface Prop {
   getDetail: Function;
-  changeStatus: Function;
+  changeStatusAndGetList: Function;
   member: Member;
 }
 
@@ -34,7 +34,7 @@ class DetailScreen extends Component<ScreenProp & Prop> {
           icon={{name: 'user', type: 'font-awesome', color: colors.icon.color }}
           overlayContainerStyle={{backgroundColor: member.status ? member.color : colors.disabled.color }}
           activeOpacity={0.7}
-          onPress={(): void => { this.props.changeStatus(member) }}
+          onPress={(): void => { this.props.changeStatusAndGetList(member) }}
         />
         <View style={styles.spacer} />
         <Text style={styles.label}>出社時間: { member.online || '--------' }</Text>
@@ -62,6 +62,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const actionCreators = { getDetail, changeStatus }
+const actionCreators = { getDetail, changeStatusAndGetList }
 
 export default connect(mapStateToProps, actionCreators)(DetailScreen)

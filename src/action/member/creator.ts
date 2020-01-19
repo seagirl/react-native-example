@@ -30,11 +30,29 @@ export function changeStatus (member: Member) {
   }
 }
 
+export function changeStatusAndGetList (member: Member) {
+  return async (dispatch): Promise<void> => {
+    const changeStatusPromise = changeStatus(member)
+    await changeStatusPromise(dispatch)
+    const getListPromise = getList()
+    await getListPromise(dispatch)
+  }
+}
+
 export function changeColor (member: Member, colorId: number) {
   return async (dispatch): Promise<void> => {
     let newMember = await MemberAPI.changeColor(member, colorId)
     newMember = await MemberAPI.getDetail(newMember.name)
     return dispatch(getDetailAction(newMember))
+  }
+}
+
+export function changeColorAndGetDetail (member: Member, colorId: number) {
+  return async (dispatch): Promise<void> => {
+    const changeColorPromise = changeColor(member, colorId)
+    await changeColorPromise(dispatch)
+    const getDetailPromise = getDetail(member.name)
+    await getDetailPromise(dispatch)
   }
 }
 
