@@ -9,7 +9,7 @@ export function getList () {
       const newMembers = await MemberAPI.getList()
       return dispatch(getListAction(newMembers || []))
     } catch {
-      console.log('MemberAPI.getList')
+      console.log('[ERROR] MemberAPI.getList')
       return dispatch(setRefreshingAction(false))
     }
   }

@@ -2,12 +2,14 @@ import React, { Component, ReactNode } from 'react'
 import { ScrollView, RefreshControl } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem, Button } from 'react-native-elements'
+import { getData } from '../action/config'
 import { getList, selectMember, setRefreshing } from '../action/member'
 import { Member } from '../entity'
 import { ScreenProp } from './navigation'
 import { styles, colors } from './style'
 
 interface Prop {
+  getData: Function;
   getList: Function;
   selectMember: Function;
   setRefreshing: Function;
@@ -40,6 +42,7 @@ class ListScreen extends Component<ScreenProp & Prop> {
   timer?: number
 
   componentDidMount (): void {
+    this.props.getData()
     this.props.getList()
 
     this.props.navigation.addListener('willFocus', () => {
@@ -103,6 +106,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const actionCreators = { getList, selectMember, setRefreshing }
+const actionCreators = { getData, getList, selectMember, setRefreshing }
 
 export default connect(mapStateToProps, actionCreators)(ListScreen)
