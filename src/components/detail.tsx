@@ -46,7 +46,7 @@ class DetailScreen extends Component<ScreenProp & Prop> {
 
 const mapStateToProps = (state): object => {
   return {
-    member: state.selectedMember
+    member: state.member.selected
   }
 }
 

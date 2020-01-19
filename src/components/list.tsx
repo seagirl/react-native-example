@@ -55,7 +55,7 @@ class ListScreen extends Component<ScreenProp & Prop> {
 
 const mapStateToProps = (state): object => {
   return {
-    members: state.members
+    members: state.member.items
   }
 }
 
