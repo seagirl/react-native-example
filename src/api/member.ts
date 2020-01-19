@@ -4,6 +4,7 @@ export class MemberAPI {
   static baseURL = 'https://working.s2f.dev/api/members'
 
   static async getList (): Promise<Member[]> {
+    console.log('MemberAPI.getList()')
     const res = await fetch(this.baseURL)
     const json = await res.json()
     return json.members

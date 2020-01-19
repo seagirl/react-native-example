@@ -25,3 +25,11 @@ export interface SelectMemberPayload {
 export const selectMemberAction = (member: Member): Action<SelectMemberPayload> => {
   return { type: Types.SELECT_MEMBER, payload: { member: member } }
 }
+
+export interface SetRefreshingPayload {
+  refreshing: boolean;
+}
+
+export const setRefreshingAction = (refreshing: boolean): Action<SetRefreshingPayload> => {
+  return { type: Types.REFRESHING, payload: { refreshing: refreshing } }
+}

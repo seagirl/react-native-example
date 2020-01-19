@@ -1,8 +1,8 @@
 import React, { Component, ReactNode } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, RefreshControl } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
-import { getList, selectMember } from '../action/member'
+import { getList, selectMember, setRefreshing } from '../action/member'
 import { Member } from '../entity'
 import { ScreenProp } from './navigation'
 import { styles, colors } from './style'
@@ -10,6 +10,8 @@ import { styles, colors } from './style'
 interface Prop {
   getList: Function;
   selectMember: Function;
+  setRefreshing: Function;
+  refreshing: boolean;
   members: Member[];
 }
 
@@ -18,12 +20,22 @@ class ListScreen extends Component<ScreenProp & Prop> {
     title: 'S2',
   }
 
+  timer?: number
+
   componentDidMount (): void {
     this.props.getList()
 
     this.props.navigation.addListener('willFocus', () => {
       this.props.getList()
     })
+
+    this.timer = setInterval(() => {
+      this.props.getList()
+    }, 1000 * 30)
+  }
+
+  componentWillUnmount (): void {
+    clearInterval(this.timer)
   }
 
   itemDidSelect (member: Member): void {
@@ -33,7 +45,17 @@ class ListScreen extends Component<ScreenProp & Prop> {
 
   render (): ReactNode {
     return (
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={this.props.refreshing}
+            onRefresh={(): void => {
+              this.props.setRefreshing(true)
+              this.props.getList()
+            }}
+          />
+        }
+      >
         {
           this.props.members.map((member, i) => (
             <ListItem
@@ -59,10 +81,11 @@ class ListScreen extends Component<ScreenProp & Prop> {
 
 const mapStateToProps = (state): object => {
   return {
+    refreshing: state.member.refreshing,
     members: state.member.items
   }
 }
 
-const actionCreators = { getList, selectMember }
+const actionCreators = { getList, selectMember, setRefreshing }
 
 export default connect(mapStateToProps, actionCreators)(ListScreen)
