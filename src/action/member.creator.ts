@@ -1,12 +1,11 @@
 import { MemberAPI } from '../api'
-import types from './types'
-import { Action } from './'
+import { Action, ActionTypes } from './'
 
 export function getList () {
   return (dispatch): Promise<void> => {
     return MemberAPI.getList()
       .then(members => {
-        dispatch({ type: types.LIST_DATA_LOADED, payload: { members: members } })
+        dispatch({ type: ActionTypes.LIST_DATA_LOADED, payload: { members: members } })
       })
   }
 }
@@ -15,11 +14,11 @@ export function getDetail (name: string) {
   return (dispatch): Promise<void> => {
     return MemberAPI.getDetail(name)
       .then(member => {
-        dispatch({ type: types.DETAIL_DATA_LOADED, payload: { member: member } })
+        dispatch({ type: ActionTypes.DETAIL_DATA_LOADED, payload: { member: member } })
       })
   }
 }
 
 export function selectMember (member): Action {
-  return { type: types.SELECT_MEMBER, payload: { member: member } }
+  return { type: ActionTypes.SELECT_MEMBER, payload: { member: member } }
 }
