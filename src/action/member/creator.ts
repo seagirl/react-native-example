@@ -4,47 +4,36 @@ import { Action } from '../'
 import { getListAction, getDetailAction, selectMemberAction, SelectMemberPayload, setRefreshingAction, SetRefreshingPayload } from './action'
 
 export function getList () {
-  return (dispatch): Promise<void> => {
-    return MemberAPI.getList()
-      .then(members => {
-        dispatch(getListAction(members))
-      })
-      .catch(() => {
-        dispatch(setRefreshingAction(false))
-      })
+  return async (dispatch): Promise<void> => {
+    try {
+      const newMembers = await MemberAPI.getList()
+      return dispatch(getListAction(newMembers))
+    } catch {
+      return dispatch(setRefreshingAction(false))
+    }
   }
 }
 
 export function getDetail (name: string) {
-  return (dispatch): Promise<void> => {
-    return MemberAPI.getDetail(name)
-      .then(member => {
-        dispatch(getDetailAction(member))
-      })
+  return async (dispatch): Promise<void> => {
+    const newMember = await MemberAPI.getDetail(name)
+    return dispatch(getDetailAction(newMember))
   }
 }
 
 export function changeStatus (member: Member) {
-  return (dispatch): Promise<void> => {
-    return MemberAPI.changeStatus(member)
-      .then(member => {
-        MemberAPI.getDetail(member.name)
-          .then(member => {
-            dispatch(getDetailAction(member))
-          })
-      })
+  return async (dispatch): Promise<void> => {
+    let newMember = await MemberAPI.changeStatus(member)
+    newMember = await MemberAPI.getDetail(newMember.name)
+    return dispatch(getDetailAction(newMember))
   }
 }
 
 export function changeColor (member: Member, colorId: number) {
-  return (dispatch): Promise<void> => {
-    return MemberAPI.changeColor(member, colorId)
-      .then(member => {
-        MemberAPI.getDetail(member.name)
-          .then(member => {
-            dispatch(getDetailAction(member))
-          })
-      })
+  return async (dispatch): Promise<void> => {
+    let newMember = await MemberAPI.changeColor(member, colorId)
+    newMember = await MemberAPI.getDetail(newMember.name)
+    return dispatch(getDetailAction(newMember))
   }
 }
 
