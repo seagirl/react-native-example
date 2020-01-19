@@ -40,7 +40,7 @@ class DetailScreen extends Component<ScreenProp & Prop> {
         <Text style={styles.label}>出社時間: { member.online || '--------' }</Text>
         <Text style={styles.label}>退社時間: { member.offline || '--------' }</Text>
         <View style={styles.spacer} />
-        {/* <Button
+        <Button
           title='色を変更する'
           buttonStyle={{ backgroundColor: colors.theme.color }}
           icon={{
@@ -49,7 +49,8 @@ class DetailScreen extends Component<ScreenProp & Prop> {
             size: 15,
             color: colors.icon.color
           }}
-        /> */}
+          onPress={(): void => { this.props.navigation.navigate('ColorPicker') }}
+        />
       </View>
     )
   }

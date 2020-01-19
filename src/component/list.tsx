@@ -26,10 +26,6 @@ class ListScreen extends Component<ScreenProp & Prop> {
     })
   }
 
-  componentDidUpdate (): void {
-    console.log('componentDidUpdate list')
-  }
-
   itemDidSelect (member: Member): void {
     this.props.selectMember(member)
     this.props.navigation.navigate('Detail')

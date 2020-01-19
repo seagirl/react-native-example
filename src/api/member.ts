@@ -54,4 +54,19 @@ export class MemberAPI {
       offline: member.offline
     }
   }
+
+  static async changeColor (member: Member, colorId: number): Promise<Member> {
+    const res = await fetch(this.baseURL + '/' + member.name + '/color?colorId=' + colorId, {
+      method: 'POST'
+    })
+    const json = await res.json()
+    const color = json.color
+    return {
+      name: member.name,
+      status: member.status,
+      color: color.code,
+      online: member.online,
+      offline: member.offline
+    }
+  }
 }

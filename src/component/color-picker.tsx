@@ -2,49 +2,39 @@ import React, { Component, ReactNode } from 'react'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
-import { getList, selectMember } from '../action/member'
-import { Member } from '../entity'
+import { getList } from '../action/color'
+import { Color, Member } from '../entity'
 import { ScreenProp } from './navigation'
 import { styles, colors } from './style'
 
 interface Prop {
   getList: Function;
-  selectMember: Function;
-  members: Member[];
+  colors: Color[];
+  member: Member
 }
 
 class ColorPickerScreen extends Component<ScreenProp & Prop> {
   static navigationOptions = {
-    title: '色',
+    title: '色を変更する',
   }
 
   componentDidMount (): void {
     this.props.getList()
   }
 
-  itemDidSelect (member: Member): void {
-    this.props.selectMember(member)
-    this.props.navigation.navigate('Detail')
-  }
-
   render (): ReactNode {
     return (
       <ScrollView>
         {
-          this.props.members.map((member, i) => (
+          this.props.colors.map((color, i) => (
             <ListItem
               key={i}
-              leftIcon={{name: 'user', type: 'font-awesome', color: member.color }}
-              titleStyle={styles.label}
-              title={member.name}
+              containerStyle={{ backgroundColor: color.code }}
+              title={color.code}
+              titleStyle={{ color: colors.icon.color }}
               bottomDivider
-              chevron
-              badge={
-                member.status
-                  ? { value: 'オンライン', badgeStyle: { backgroundColor: colors.active.color } }
-                  : { value: 'オフライン', badgeStyle: { backgroundColor: colors.disabled.color } }
-              }
-              onPress={(): void => { this.itemDidSelect(member) }}
+              checkmark={this.props.member.color === color.code ? { color: colors.icon.color } : undefined}
+              onPress={(): void => { console.log('select') }}
             />
           ))
         }
@@ -55,10 +45,11 @@ class ColorPickerScreen extends Component<ScreenProp & Prop> {
 
 const mapStateToProps = (state): object => {
   return {
-    members: state.member.items
+    colors: state.color.items,
+    member: state.member.selected
   }
 }
 
-const actionCreators = { getList, selectMember }
+const actionCreators = { getList }
 
 export default connect(mapStateToProps, actionCreators)(ColorPickerScreen)
