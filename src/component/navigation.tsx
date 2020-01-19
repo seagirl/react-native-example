@@ -3,6 +3,7 @@ import ListScreen from './list'
 import DetailScreen from './detail'
 import ColorPickerScreen from './color-picker'
 import ConfigScreen from './config'
+import { colors } from './style'
 
 export interface ScreenProp {
   navigation: NavigationStackProp<{ userId: string }>;
@@ -24,6 +25,9 @@ export const MainNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'List'
+    initialRouteName: 'List',
+    defaultNavigationOptions: {
+      headerTintColor: colors.theme.color,
+    },
   }
 )

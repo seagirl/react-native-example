@@ -54,7 +54,9 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
           }}
           onPress={(): void => {
             this.props.setData(this.inputId, this.inputPassword)
-            this.props.navigation.goBack()
+            setTimeout(() => {
+              this.props.navigation.goBack()
+            }, 100)
           }}
         />
       </View>
