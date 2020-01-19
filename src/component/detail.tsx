@@ -1,14 +1,15 @@
 import React, { Component, ReactNode } from 'react'
 import { Text, View } from 'react-native'
-import { Avatar } from 'react-native-elements'
+import { Avatar, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
-import { getDetail } from '../action/member'
+import { getDetail, changeStatus } from '../action/member'
 import { Member } from '../entity'
 import { ScreenProp } from './navigation'
 import { styles, colors } from './style'
 
 interface Prop {
   getDetail: Function;
+  changeStatus: Function;
   member: Member;
 }
 
@@ -31,12 +32,24 @@ class DetailScreen extends Component<ScreenProp & Prop> {
           size="xlarge"
           rounded
           icon={{name: 'user', type: 'font-awesome', color: colors.icon.color }}
-          overlayContainerStyle={{backgroundColor: member.status ? member.color : colors.disabled.color}}
+          overlayContainerStyle={{backgroundColor: member.status ? member.color : colors.disabled.color }}
           activeOpacity={0.7}
+          onPress={(): void => { this.props.changeStatus(member) }}
         />
         <View style={styles.spacer} />
         <Text style={styles.label}>出社時間: { member.online || '--------' }</Text>
         <Text style={styles.label}>退社時間: { member.offline || '--------' }</Text>
+        <View style={styles.spacer} />
+        {/* <Button
+          title='色を変更する'
+          buttonStyle={{ backgroundColor: colors.theme.color }}
+          icon={{
+            name: 'tint',
+            type: 'font-awesome',
+            size: 15,
+            color: colors.icon.color
+          }}
+        /> */}
       </View>
     )
   }
@@ -48,6 +61,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const actionCreators = { getDetail }
+const actionCreators = { getDetail, changeStatus }
 
 export default connect(mapStateToProps, actionCreators)(DetailScreen)

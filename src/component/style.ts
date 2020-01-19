@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native'
 export const colors = StyleSheet.create({
   label: { color: '#333' },
   icon: { color: '#fff' },
+  theme: { color: '#22304F' },
   active: { color: '#c33' },
   disabled: { color: '#ccc' },
 })

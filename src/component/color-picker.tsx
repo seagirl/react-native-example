@@ -13,21 +13,13 @@ interface Prop {
   members: Member[];
 }
 
-class ListScreen extends Component<ScreenProp & Prop> {
+class ColorPickerScreen extends Component<ScreenProp & Prop> {
   static navigationOptions = {
-    title: 'S2',
+    title: '色',
   }
 
   componentDidMount (): void {
     this.props.getList()
-
-    this.props.navigation.addListener('willFocus', () => {
-      this.props.getList()
-    })
-  }
-
-  componentDidUpdate (): void {
-    console.log('componentDidUpdate list')
   }
 
   itemDidSelect (member: Member): void {
@@ -69,4 +61,4 @@ const mapStateToProps = (state): object => {
 
 const actionCreators = { getList, selectMember }
 
-export default connect(mapStateToProps, actionCreators)(ListScreen)
+export default connect(mapStateToProps, actionCreators)(ColorPickerScreen)

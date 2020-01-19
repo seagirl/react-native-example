@@ -21,6 +21,18 @@ export function getDetail (name: string) {
   }
 }
 
+export function changeStatus (member: Member) {
+  return (dispatch): Promise<void> => {
+    return MemberAPI.changeStatus(member)
+      .then(member => {
+        MemberAPI.getDetail(member.name)
+          .then(member => {
+            dispatch(getDetailAction(member))
+          })
+      })
+  }
+}
+
 export function selectMember (member: Member): Action<SelectMemberPayload> {
   return selectMemberAction(member)
 }

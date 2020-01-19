@@ -38,4 +38,20 @@ export class MemberAPI {
       offline: member.offline
     }
   }
+
+  static async changeStatus (member: Member): Promise<Member> {
+    const newStatus = member.status ? 0 : 1
+    const res = await fetch(this.baseURL + '/' + member.name + '/state?state=' + newStatus, {
+      method: 'POST'
+    })
+    const json = await res.json()
+    const status = json.status
+    return {
+      name: member.name,
+      status: status === 1,
+      color: member.color,
+      online: member.online,
+      offline: member.offline
+    }
+  }
 }
