@@ -9,6 +9,9 @@ export function getList () {
       .then(members => {
         dispatch(getListAction(members))
       })
+      .catch(() => {
+        dispatch(setRefreshingAction(false))
+      })
   }
 }
 
