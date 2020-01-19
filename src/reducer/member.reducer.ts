@@ -1,4 +1,4 @@
-import { ActionTypes } from '../action'
+import { MemberAction } from '../action'
 import { MemberList, MemberDetail } from '../entity'
 
 interface State {
@@ -11,13 +11,15 @@ const initialState: State = {
   selected: null
 }
 
+const Types = MemberAction.Types
+
 export function memberReducer (state = initialState, action): State {
   switch (action.type) {
-    case ActionTypes.LIST_DATA_LOADED:
+    case Types.LIST_DATA_LOADED:
       return { ...state, items: action.payload.members }
-    case ActionTypes.DETAIL_DATA_LOADED:
+    case Types.DETAIL_DATA_LOADED:
       return { ...state, selected: action.payload.member }
-    case ActionTypes.SELECT_MEMBER:
+    case Types.SELECT_MEMBER:
       return { ...state, selected: action.payload.member }
     default:
       return state
