@@ -23,6 +23,8 @@ class ListScreen extends Component<ScreenProp & Prop> {
   timer?: number
 
   componentDidMount (): void {
+    console.log('componentDidMount: list')
+
     this.props.getList()
 
     this.props.navigation.addListener('willFocus', () => {

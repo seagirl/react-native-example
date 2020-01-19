@@ -18,5 +18,8 @@ export const MainNavigator = createStackNavigator(
     ColorPicker: {
       screen: ColorPickerScreen,
     }
+  },
+  {
+    initialRouteName: 'List'
   }
 )
