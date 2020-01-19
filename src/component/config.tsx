@@ -2,13 +2,13 @@ import React, { Component, ReactNode } from 'react'
 import { View, Text } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
-import { getData, setData } from '../action/config'
+import { getData, setDataAndGetMemberList } from '../action/config'
 import { ScreenProp } from './navigation'
 import { styles, colors } from './style'
 
 interface Prop {
   getData: Function;
-  setData: Function;
+  setDataAndGetMemberList: Function;
   id: string;
   password: string;
 }
@@ -56,10 +56,8 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
             color: colors.icon.color
           }}
           onPress={(): void => {
-            this.props.setData(this.inputId, this.inputPassword)
-            setTimeout(() => {
-              this.props.navigation.goBack()
-            }, 100)
+            this.props.setDataAndGetMemberList(this.inputId, this.inputPassword)
+            this.props.navigation.goBack()
           }}
         />
       </View>
@@ -74,6 +72,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const actionCreators = { getData, setData }
+const actionCreators = { getData, setDataAndGetMemberList }
 
 export default connect(mapStateToProps, actionCreators)(ConfigScreen)

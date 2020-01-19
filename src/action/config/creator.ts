@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage'
+import { getList } from '../member'
 import { getDataAction, setDataAction } from './action'
 
 export function getData () {
@@ -22,5 +23,23 @@ export function setData (id: string, password: string) {
     } catch (error) {
       console.log(error)
     }
+  }
+}
+
+export function getDataAndGetMemberList () {
+  return async (dispatch): Promise<void> => {
+    const getDataPromise = getData()
+    await getDataPromise(dispatch)
+    const getListPromise = getList()
+    await getListPromise(dispatch)
+  }
+}
+
+export function setDataAndGetMemberList (id: string, password: string) {
+  return async (dispatch): Promise<void> => {
+    const setDataPromise = setData(id, password)
+    await setDataPromise(dispatch)
+    const getListPromise = getList()
+    await getListPromise(dispatch)
   }
 }
