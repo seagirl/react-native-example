@@ -47,7 +47,7 @@ export function changeColor (member: Member, colorId: number) {
   }
 }
 
-export function changeColorAndGetDetail (member: Member, colorId: number) {
+export function changeColorAndFetchAll (member: Member, colorId: number) {
   return async (dispatch): Promise<void> => {
     const changeColorPromise = changeColor(member, colorId)
     await changeColorPromise(dispatch)

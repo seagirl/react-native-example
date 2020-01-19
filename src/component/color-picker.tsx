@@ -3,14 +3,14 @@ import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
 import { getList } from '../action/color'
-import { changeColorAndGetDetail } from '../action/member'
+import { changeColorAndFetchAll } from '../action/member'
 import { Color, Member } from '../entity'
 import { ScreenProp } from './navigation'
 import { colors } from './style'
 
 interface Prop {
   getList: Function;
-  changeColorAndGetDetail: Function;
+  changeColorAndFetchAll: Function;
   colors: Color[];
   member: Member;
 }
@@ -37,7 +37,7 @@ class ColorPickerScreen extends Component<ScreenProp & Prop> {
               bottomDivider
               checkmark={this.props.member.color === color.code ? { color: colors.icon.color } : undefined}
               onPress={(): void => {
-                this.props.changeColorAndGetDetail(this.props.member, color.id)
+                this.props.changeColorAndFetchAll(this.props.member, color.id)
                 this.props.navigation.goBack()
               }}
             />
@@ -55,6 +55,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const actionCreators = { getList, changeColorAndGetDetail }
+const actionCreators = { getList, changeColorAndFetchAll }
 
 export default connect(mapStateToProps, actionCreators)(ColorPickerScreen)
