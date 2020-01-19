@@ -34,10 +34,13 @@ export function changeStatus (member: Member) {
 }
 
 export function changeColor (member: Member, colorId: number) {
-  return (): Promise<void> => {
+  return (dispatch): Promise<void> => {
     return MemberAPI.changeColor(member, colorId)
-      .then(() => {
-        return
+      .then(member => {
+        MemberAPI.getDetail(member.name)
+          .then(member => {
+            dispatch(getDetailAction(member))
+          })
       })
   }
 }

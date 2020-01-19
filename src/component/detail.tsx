@@ -20,10 +20,6 @@ class DetailScreen extends Component<ScreenProp & Prop> {
 
   componentDidMount (): void {
     this.props.getDetail(this.props.member.name)
-
-    this.props.navigation.addListener('willFocus', () => {
-      this.props.getDetail(this.props.member.name)
-    })
   }
 
   render (): ReactNode {
