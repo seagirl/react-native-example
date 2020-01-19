@@ -43,7 +43,10 @@ class ListScreen extends Component<ScreenProp & Prop> {
 
   componentDidMount (): void {
     this.props.initConfig()
-    this.props.getList()
+
+    setTimeout(() => {
+      this.props.getList()
+    }, 100)
 
     this.props.navigation.addListener('willFocus', () => {
       this.props.getList()

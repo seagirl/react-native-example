@@ -26,6 +26,9 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
   }
 
   render (): ReactNode {
+    this.inputId = this.props.id
+    this.inputPassword = this.props.password
+
     return (
       <View style={styles.containerConfig}>
         <Text style={styles.h4}>ベーシック認証</Text>
