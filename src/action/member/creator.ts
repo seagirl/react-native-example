@@ -53,6 +53,8 @@ export function changeColorAndGetDetail (member: Member, colorId: number) {
     await changeColorPromise(dispatch)
     const getDetailPromise = getDetail(member.name)
     await getDetailPromise(dispatch)
+    const getListPromise = getList()
+    await getListPromise(dispatch)
   }
 }
 
