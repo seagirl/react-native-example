@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getDetail } from '../action/member'
 import { Member } from '../entity'
 import { ScreenProp } from './navigation'
-import { styles } from './style'
+import { styles, colors } from './style'
 
 interface Prop {
   getDetail: Function;
@@ -25,20 +25,18 @@ class DetailScreen extends Component<ScreenProp & Prop> {
     const member = this.props.member
     return (
       <View style={styles.container}>
-        <View style={styles.subContainer}>
-          <Text style={styles.text}>{ member.name }</Text>
-          <View style={styles.spacer} />
-          <Avatar
-            size="xlarge"
-            rounded
-            icon={{name: 'user', type: 'font-awesome', color: '#fff' }}
-            overlayContainerStyle={{backgroundColor: member.status ? member.color : '#ccc'}}
-            activeOpacity={0.7}
-          />
-          <View style={styles.spacer} />
-          <Text style={styles.textSmall}>出社時間: { member.online || '--------' }</Text>
-          <Text style={styles.textSmall}>退社時間: { member.offline || '--------' }</Text>
-        </View>
+        <Text style={styles.h3}>{ member.name }</Text>
+        <View style={styles.spacer} />
+        <Avatar
+          size="xlarge"
+          rounded
+          icon={{name: 'user', type: 'font-awesome', color: colors.icon.color }}
+          overlayContainerStyle={{backgroundColor: member.status ? member.color : colors.disabled.color}}
+          activeOpacity={0.7}
+        />
+        <View style={styles.spacer} />
+        <Text style={styles.label}>出社時間: { member.online || '--------' }</Text>
+        <Text style={styles.label}>退社時間: { member.offline || '--------' }</Text>
       </View>
     )
   }

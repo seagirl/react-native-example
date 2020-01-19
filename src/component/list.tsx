@@ -3,13 +3,14 @@ import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { ListItem } from 'react-native-elements'
 import { getList, selectMember } from '../action/member'
-import { MemberList } from '../entity'
+import { Member } from '../entity'
 import { ScreenProp } from './navigation'
+import { styles, colors } from './style'
 
 interface Prop {
   getList: Function;
   selectMember: Function;
-  members: MemberList[];
+  members: Member[];
 }
 
 class ListScreen extends Component<ScreenProp & Prop> {
@@ -21,7 +22,7 @@ class ListScreen extends Component<ScreenProp & Prop> {
     this.props.getList()
   }
 
-  itemDidSelect (member: MemberList): void {
+  itemDidSelect (member: Member): void {
     this.props.selectMember(member)
     this.props.navigation.navigate('Detail')
   }
@@ -35,14 +36,14 @@ class ListScreen extends Component<ScreenProp & Prop> {
             <ListItem
               key={i}
               leftIcon={{name: 'user', type: 'font-awesome', color: member.color }}
-              titleStyle={{ color: '#333' }}
+              titleStyle={styles.label}
               title={member.name}
               bottomDivider
               chevron
               badge={
                 member.status
-                  ? { value: 'オンライン', badgeStyle: { backgroundColor: '#c33' } }
-                  : { value: 'オフライン', badgeStyle: { backgroundColor: '#ccc' } }
+                  ? { value: 'オンライン', badgeStyle: { backgroundColor: colors.active.color } }
+                  : { value: 'オフライン', badgeStyle: { backgroundColor: colors.disabled.color } }
               }
               onPress={(): void => { this.itemDidSelect(member) }}
             />

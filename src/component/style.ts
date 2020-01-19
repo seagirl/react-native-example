@@ -1,29 +1,33 @@
 import { StyleSheet } from 'react-native'
 
+export const colors = StyleSheet.create({
+  label: { color: '#333' },
+  icon: { color: '#fff' },
+  active: { color: '#c33' },
+  disabled: { color: '#ccc' },
+})
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  subContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  navigation: {
-    backgroundColor: '#333',
-    color: '#fff',
+  h1: {
+    ...colors.label,
+    fontSize: 36
   },
-  text: {
-    color: '#333',
-    fontSize: 24,
+  h2: {
+    ...colors.label,
+    fontSize: 28
   },
-  textSmall: {
-    color: '#333',
-    fontSize: 16,
+  h3: {
+    ...colors.label,
+    fontSize: 24
   },
-  button: {
-    backgroundColor: '#333',
+  label: {
+    ...colors.label,
+    fontSize: 16
   },
   spacer: {
     height: 16
