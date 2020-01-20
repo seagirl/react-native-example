@@ -6,10 +6,10 @@ import { getListAction, getDetailAction, selectMemberAction, SelectMemberPayload
 export function getList () {
   return async (dispatch): Promise<void> => {
     try {
-      const newMembers = await MemberAPI.getList()
+      const newMembers = await MemberAPI.default.getList()
       return dispatch(getListAction(newMembers || []))
-    } catch {
-      console.log('[ERROR] MemberAPI.getList')
+    } catch (error) {
+      console.log(error)
       return dispatch(setRefreshingAction(false))
     }
   }
@@ -17,44 +17,39 @@ export function getList () {
 
 export function getDetail (name: string) {
   return async (dispatch): Promise<void> => {
-    const newMember = await MemberAPI.getDetail(name)
+    const newMember = await MemberAPI.default.getDetail(name)
     return dispatch(getDetailAction(newMember))
   }
 }
 
 export function changeStatus (member: Member) {
   return async (dispatch): Promise<void> => {
-    let newMember = await MemberAPI.changeStatus(member)
-    newMember = await MemberAPI.getDetail(newMember.name)
+    let newMember = await MemberAPI.default.changeStatus(member)
+    newMember = await MemberAPI.default.getDetail(newMember.name)
     return dispatch(getDetailAction(newMember))
   }
 }
 
 export function changeStatusAndGetList (member: Member) {
   return async (dispatch): Promise<void> => {
-    const changeStatusPromise = changeStatus(member)
-    await changeStatusPromise(dispatch)
-    const getListPromise = getList()
-    await getListPromise(dispatch)
+    await changeStatus(member)(dispatch)
+    await getList()(dispatch)
   }
 }
 
 export function changeColor (member: Member, colorId: number) {
   return async (dispatch): Promise<void> => {
-    let newMember = await MemberAPI.changeColor(member, colorId)
-    newMember = await MemberAPI.getDetail(newMember.name)
+    let newMember = await MemberAPI.default.changeColor(member, colorId)
+    newMember = await MemberAPI.default.getDetail(newMember.name)
     return dispatch(getDetailAction(newMember))
   }
 }
 
 export function changeColorAndFetchAll (member: Member, colorId: number) {
   return async (dispatch): Promise<void> => {
-    const changeColorPromise = changeColor(member, colorId)
-    await changeColorPromise(dispatch)
-    const getDetailPromise = getDetail(member.name)
-    await getDetailPromise(dispatch)
-    const getListPromise = getList()
-    await getListPromise(dispatch)
+    await changeColor(member, colorId)(dispatch)
+    await getDetail(member.name)(dispatch)
+    await getList()(dispatch)
   }
 }
 

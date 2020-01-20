@@ -1,11 +1,13 @@
-import store from '../store'
 import { Buffer } from 'buffer'
+import store from '../store'
 import { Member } from '../entity/member'
 
 export class MemberAPI {
-  static baseURL = 'https://working.s2f.dev/api/members'
+  static default = new MemberAPI()
 
-  static authString (): string | null {
+  private baseURL = 'https://working.s2f.dev/api/members'
+
+  private authString (): string | null {
     const state = store.getState()
     const id = state.config.id
     const password = state.config.password
@@ -17,7 +19,7 @@ export class MemberAPI {
     return null
   }
 
-  static createHeaders (): Headers {
+  private createHeaders (): Headers {
     const authString = this.authString()
     const headers = new Headers()
     if (authString !== null) {
@@ -26,7 +28,7 @@ export class MemberAPI {
     return headers
   }
 
-  static async getList (): Promise<Member[]> {
+  async getList (): Promise<Member[]> {
     console.log('MemberAPI.getList()')
 
     const headers = this.createHeaders()
@@ -51,7 +53,7 @@ export class MemberAPI {
       })
   }
 
-  static async getDetail (name: string): Promise<Member> {
+  async getDetail (name: string): Promise<Member> {
     const headers = this.createHeaders()
     const res = await fetch(this.baseURL + '/' + name, { method: 'GET', headers: headers })
     const json = await res.json()
@@ -66,7 +68,7 @@ export class MemberAPI {
     }
   }
 
-  static async changeStatus (member: Member): Promise<Member> {
+  async changeStatus (member: Member): Promise<Member> {
     const headers = this.createHeaders()
     const newStatus = member.status ? 0 : 1
     const res = await fetch(this.baseURL + '/' + member.name + '/state?state=' + newStatus, {
@@ -84,7 +86,7 @@ export class MemberAPI {
     }
   }
 
-  static async changeColor (member: Member, colorId: number): Promise<Member> {
+  async changeColor (member: Member, colorId: number): Promise<Member> {
     const headers = this.createHeaders()
     const res = await fetch(this.baseURL + '/' + member.name + '/color?colorId=' + colorId, {
       method: 'POST',
