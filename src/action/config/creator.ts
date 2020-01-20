@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { getList } from '../member'
+import { getList } from '../member/creator'
 import { getDataAction, setDataAction } from './action'
 
 export function getData () {

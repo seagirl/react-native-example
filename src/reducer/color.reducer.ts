@@ -1,4 +1,4 @@
-import { Types } from '../action/color'
+import { Types } from '../action/color/type'
 import { Color } from '../entity'
 
 interface State {

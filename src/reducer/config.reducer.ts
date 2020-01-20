@@ -1,4 +1,4 @@
-import { Types } from '../action/config'
+import { Types } from '../action/config/type'
 
 interface State {
   id: string;

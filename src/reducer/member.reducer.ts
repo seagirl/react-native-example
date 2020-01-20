@@ -1,4 +1,4 @@
-import { Types } from '../action/member'
+import { Types } from '../action/member/type'
 import { Member } from '../entity'
 
 interface State {
