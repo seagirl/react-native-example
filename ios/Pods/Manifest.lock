@@ -5,30 +5,12 @@ PODS:
   - EXConstants (8.0.0):
     - UMConstantsInterface
     - UMCore
-  - EXErrorRecovery (1.0.0):
-    - UMCore
   - EXFileSystem (8.0.0):
     - UMCore
     - UMFileSystemInterface
-  - EXFont (8.0.0):
-    - UMCore
-    - UMFontInterface
-  - EXKeepAwake (8.0.0):
-    - UMCore
-  - EXLinearGradient (8.0.0):
-    - UMCore
-  - EXLocation (8.0.0):
-    - UMCore
-    - UMPermissionsInterface
-    - UMTaskManagerInterface
   - EXPermissions (8.0.0):
     - UMCore
     - UMPermissionsInterface
-  - EXSQLite (8.0.0):
-    - UMCore
-    - UMFileSystemInterface
-  - EXWebBrowser (8.0.0):
-    - UMCore
   - FBLazyVector (0.61.5)
   - FBReactNativeSpec (0.61.5):
     - Folly (= 2018.10.22.00)
@@ -259,6 +241,8 @@ PODS:
     - React
   - RNScreens (2.0.0-alpha.25):
     - React
+  - RNVectorIcons (6.6.0):
+    - React
   - UMBarCodeScannerInterface (5.0.0)
   - UMCameraInterface (5.0.0)
   - UMConstantsInterface (5.0.0)
@@ -280,15 +264,8 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
-  - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
-  - EXFont (from `../node_modules/expo-font/ios`)
-  - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
-  - EXLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
-  - EXLocation (from `../node_modules/expo-location/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
-  - EXSQLite (from `../node_modules/expo-sqlite/ios`)
-  - EXWebBrowser (from `../node_modules/expo-web-browser/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
@@ -322,6 +299,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
   - UMCameraInterface (from `../node_modules/unimodules-camera-interface/ios`)
   - UMConstantsInterface (from `../node_modules/unimodules-constants-interface/ios`)
@@ -349,33 +327,12 @@ EXTERNAL SOURCES:
   EXConstants:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-constants/ios"
-  EXErrorRecovery:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-file-system/ios"
-  EXFont:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-font/ios"
-  EXKeepAwake:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-keep-awake/ios"
-  EXLinearGradient:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-linear-gradient/ios"
-  EXLocation:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-location/ios"
   EXPermissions:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-permissions/ios"
-  EXSQLite:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-sqlite/ios"
-  EXWebBrowser:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-web-browser/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -436,6 +393,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   UMBarCodeScannerInterface:
     :path: !ruby/object:Pathname
     path: "../node_modules/unimodules-barcode-scanner-interface/ios"
@@ -480,15 +439,8 @@ SPEC CHECKSUMS:
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   EXAppLoaderProvider: ebdb6bc2632c1ccadbe49f5e4104d8d690969c49
   EXConstants: 4051b16c17ef3defa03c541d42811dc92b249146
-  EXErrorRecovery: d36db99ec6a3808f313f01b0890eb443796dd1c2
   EXFileSystem: 6e0d9bb6cc4ea404dbb8f583c1a8a2dcdf4b83b6
-  EXFont: 6187b5ab46ee578d5f8e7f2ea092752e78772235
-  EXKeepAwake: 66e9f80b6d129633725a0e42f8d285c229876811
-  EXLinearGradient: 75f302f9d6484267a3f6d3252df2e7a5f00e716a
-  EXLocation: 3c75d012ca92eed94d4338778d79c49d1252393a
   EXPermissions: 9bc08859a675d291e89be9a0870155c27c16ac35
-  EXSQLite: 220226a354912b100dfe913f5fe6f31762c8927e
-  EXWebBrowser: db32607359fb7b55b7b7b91df32dd3d8355bb3b7
   FBLazyVector: aaeaf388755e4f29cd74acbc9e3b8da6d807c37f
   FBReactNativeSpec: 118d0d177724c2d67f08a59136eb29ef5943ec75
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
@@ -519,6 +471,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: 02905abe54e1f6e59c081a10b4bd689721e17aa6
   RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
   RNScreens: 031d10e2b648afc9546f16b6a786d2efc6870310
+  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   UMBarCodeScannerInterface: 3802c8574ef119c150701d679ab386e2266d6a54
   UMCameraInterface: 985d301f688ed392f815728f0dd906ca34b7ccb1
   UMConstantsInterface: bda5f8bd3403ad99e663eb3c4da685d063c5653c
@@ -533,6 +486,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: a98e37a576a5220bf43b8faf33cfdc129d2f441d
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 5c73494b60c4acaad44174148df367e61f7a99b7
+PODFILE CHECKSUM: ff247820468c7b7c8b2d6ddab01f01dc7ab671c4
 
 COCOAPODS: 1.8.4
