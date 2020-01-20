@@ -12,6 +12,12 @@
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "jp.co.s2factory.working-clinet"
+    },
+    "android": {
+      "package": "jp.co.s2factory.working_clinet"
+    }
   }
 }
