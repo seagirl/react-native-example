@@ -1,4 +1,8 @@
 {
+  "name": "react-native-example",
+  "version": "1.0.0",
+  "description": "react-native-example",
+  "author": "yoshizu",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
