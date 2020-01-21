@@ -33,13 +33,15 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
       <View style={styles.containerConfig}>
         <Text style={styles.h4}>ベーシック認証</Text>
         <Input
-          value={this.props.id}
+          autoCompleteType='username'
+          defaultValue={this.inputId}
           placeholder='ID'
           containerStyle={styles.inputContainer}
           onChangeText={(text): void => { this.inputId = text }}
         />
         <Input
-          value={this.props.password}
+          autoCompleteType='password'
+          defaultValue={this.inputPassword}
           placeholder='PASSWORD'
           containerStyle={styles.inputContainer}
           secureTextEntry={true}
