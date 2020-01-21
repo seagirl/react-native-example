@@ -355,7 +355,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.s2factory.s2-working";
 				PRODUCT_NAME = AwsomeProject;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -375,7 +375,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.s2factory.s2-working";
 				PRODUCT_NAME = AwsomeProject;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
