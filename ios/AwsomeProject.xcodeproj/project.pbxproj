@@ -357,6 +357,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.s2factory.s2-working";
 				PRODUCT_NAME = AwsomeProject;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -377,6 +378,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.s2factory.s2-working";
 				PRODUCT_NAME = AwsomeProject;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
