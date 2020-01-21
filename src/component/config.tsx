@@ -34,14 +34,14 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
         <Text style={styles.h4}>ベーシック認証</Text>
         <Input
           autoCompleteType='username'
-          defaultValue={this.inputId}
+          defaultValue={this.inputId ? this.inputId : undefined}
           placeholder='ID'
           containerStyle={styles.inputContainer}
           onChangeText={(text): void => { this.inputId = text }}
         />
         <Input
           autoCompleteType='password'
-          defaultValue={this.inputPassword}
+          defaultValue={this.inputPassword ? this.inputPassword : undefined}
           placeholder='PASSWORD'
           containerStyle={styles.inputContainer}
           secureTextEntry={true}
