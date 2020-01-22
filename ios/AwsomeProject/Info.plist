@@ -52,7 +52,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow awsome to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow awsome to access your device's accelerometer</string>
+	<string>Allow awsome to access your device&apos;s accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give awsome periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -74,6 +74,7 @@
 		<string>Rubik-Regular.ttf</string>
 		<string>FontAwesome.ttf</string>
 		<string>Ionicons.ttf</string>
+		<string>MaterialIcons.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
