@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { getList } from '../member/creator'
-import { Action } from '../'
-import { getDataAction, setDataAction, setIdAction, setPasswordAction, IDPayload, PasswordPayload } from './action'
+import { getDataAction, setDataAction } from './action'
 
 export function getData () {
   return async (dispatch): Promise<void> => {
@@ -45,10 +44,5 @@ export function setDataAndGetMemberList (id: string, password: string) {
   }
 }
 
-export function setId (id: string): Action<IDPayload> {
-  return setIdAction(id)
-}
-
-export function setPassword (password: string): Action<PasswordPayload> {
-  return setPasswordAction(password)
-}
+export { setIdAction as setId } from './action'
+export { setPasswordAction as setPassword } from './action'

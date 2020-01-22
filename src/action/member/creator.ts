@@ -1,7 +1,6 @@
 import { MemberAPI } from '../../api'
 import { Member } from '../../entity'
-import { Action } from '../'
-import { getListAction, getDetailAction, selectMemberAction, SelectMemberPayload, setRefreshingAction, SetRefreshingPayload } from './action'
+import { getListAction, getDetailAction, setRefreshingAction } from './action'
 
 export function getList () {
   return async (dispatch): Promise<void> => {
@@ -53,10 +52,5 @@ export function changeColorAndFetchAll (member: Member, colorId: number) {
   }
 }
 
-export function selectMember (member: Member): Action<SelectMemberPayload> {
-  return selectMemberAction(member)
-}
-
-export function setRefreshing (refreshing: boolean): Action<SetRefreshingPayload> {
-  return setRefreshingAction(refreshing)
-}
+export { selectMemberAction as selectMember } from './action'
+export { setRefreshingAction as setRefreshing } from './action'
