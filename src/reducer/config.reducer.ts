@@ -16,6 +16,10 @@ export function configReducer (state = initialState, action): State {
       return { id: action.payload.id, password: action.payload.password }
     case Types.DATA_LOADED:
       return { id: action.payload.id, password: action.payload.password }
+    case Types.SET_ID:
+      return { ...state, id: action.payload.id }
+    case Types.SET_PASSWORD:
+      return { ...state, password: action.payload.password }
     default:
       return state
   }

@@ -2,13 +2,15 @@ import React, { Component, ReactNode } from 'react'
 import { View, Text } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
-import { getData, setDataAndGetMemberList } from '../action/config'
+import { getData, setDataAndGetMemberList, setId, setPassword } from '../action/config'
 import { ScreenProp } from './navigation'
 import { styles, colors } from './style'
 
 interface Prop {
   getData: Function;
   setDataAndGetMemberList: Function;
+  setId: Function;
+  setPassword: Function;
   id: string;
   password: string;
 }
@@ -18,34 +20,28 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
     title: '設定',
   }
 
-  inputId = ''
-  inputPassword = ''
-
   componentDidMount (): void {
     this.props.getData()
   }
 
   render (): ReactNode {
-    this.inputId = this.props.id
-    this.inputPassword = this.props.password
-
     return (
       <View style={styles.containerConfig}>
         <Text style={styles.h4}>ベーシック認証</Text>
         <Input
           autoCompleteType='username'
-          defaultValue={this.inputId ? this.inputId : undefined}
+          value={this.props.id}
           placeholder='ID'
           containerStyle={styles.inputContainer}
-          onChangeText={(text): void => { this.inputId = text }}
+          onChangeText={(text): void => { this.props.setId(text) }}
         />
         <Input
           autoCompleteType='password'
-          defaultValue={this.inputPassword ? this.inputPassword : undefined}
+          value={this.props.password}
           placeholder='PASSWORD'
           containerStyle={styles.inputContainer}
           secureTextEntry={true}
-          onChangeText={(text): void => { this.inputPassword = text }}
+          onChangeText={(text): void => { this.props.setPassword(text) }}
         />
         <View style={{ height: 24 }} />
         <Button
@@ -58,7 +54,7 @@ class ConfigScreen extends Component<ScreenProp & Prop> {
             color: colors.icon.color
           }}
           onPress={(): void => {
-            this.props.setDataAndGetMemberList(this.inputId, this.inputPassword)
+            this.props.setDataAndGetMemberList(this.props.id, this.props.password)
             this.props.navigation.goBack()
           }}
         />
@@ -74,6 +70,6 @@ const mapStateToProps = (state): object => {
   }
 }
 
-const actionCreators = { getData, setDataAndGetMemberList }
+const actionCreators = { getData, setDataAndGetMemberList, setId, setPassword }
 
 export default connect(mapStateToProps, actionCreators)(ConfigScreen)
