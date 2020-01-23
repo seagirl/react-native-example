@@ -35,11 +35,12 @@ workflows:
         inputs:
         - team_id: KJ75V2VWHW
         - distribution_type: ad-hoc
+        - generate_profiles: 'yes'
         - configuration: Release
     - xcode-archive@2.7.1:
         inputs:
         - team_id: KJ75V2VWHW
-        - configuration: release
+        - configuration: Release
     - deploy-to-bitrise-io@1.9.2:
         inputs:
         - deploy_path: "${BITRISE_IPA_PATH}"
@@ -53,6 +54,11 @@ workflows:
             View Build|${BITRISE_BUILD_URL}
             Android Install Page|${ANDROID_INSTALL_PAGE}
             iOS Install Page|${IOS_INSTALL_PAGE}
+        - fields: |
+            App|${BITRISE_APP_TITLE}
+            Branch|${BITRISE_GIT_BRANCH}
+            Workflow|${BITRISE_TRIGGERED_WORKFLOW_ID}
+            Build|${BITRISE_BUILD_NUMBER}
         - channel: "#general-notify"
 app:
   envs:
