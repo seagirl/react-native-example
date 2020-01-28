@@ -1,11 +1,13 @@
-import { MemberAPI } from '../../api'
+import { API } from '../../api'
 import { Member } from '../../entity'
 import { getListAction, getDetailAction, setRefreshingAction } from './action'
+
+const api = API.member
 
 export function getList () {
   return async (dispatch): Promise<void> => {
     try {
-      const newMembers = await MemberAPI.default.getList()
+      const newMembers = await api.getList()
       return dispatch(getListAction(newMembers || []))
     } catch (error) {
       console.log(error)
@@ -16,15 +18,15 @@ export function getList () {
 
 export function getDetail (name: string) {
   return async (dispatch): Promise<void> => {
-    const newMember = await MemberAPI.default.getDetail(name)
+    const newMember = await api.getDetail(name)
     return dispatch(getDetailAction(newMember))
   }
 }
 
 export function changeStatus (member: Member) {
   return async (dispatch): Promise<void> => {
-    let newMember = await MemberAPI.default.changeStatus(member)
-    newMember = await MemberAPI.default.getDetail(newMember.name)
+    let newMember = await api.changeStatus(member)
+    newMember = await api.getDetail(newMember.name)
     return dispatch(getDetailAction(newMember))
   }
 }
@@ -38,8 +40,8 @@ export function changeStatusAndGetList (member: Member) {
 
 export function changeColor (member: Member, colorId: number) {
   return async (dispatch): Promise<void> => {
-    let newMember = await MemberAPI.default.changeColor(member, colorId)
-    newMember = await MemberAPI.default.getDetail(newMember.name)
+    let newMember = await api.changeColor(member, colorId)
+    newMember = await api.getDetail(newMember.name)
     return dispatch(getDetailAction(newMember))
   }
 }
